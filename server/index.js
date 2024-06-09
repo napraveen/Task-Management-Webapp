@@ -5,15 +5,18 @@ const cors = require('cors');
 
 const mongoose = require('mongoose');
 const { Todo } = require('./db');
+
+require('dotenv').config();
 app.use(
   cors({
+    origin: ['https://task-management-webapp-rho.vercel.app/', 'http://localhost:3000'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
-    origin: 'http://localhost:3000',
   })
 );
 app.use(express.json());
 mongoose
-  .connect('mongodb://0.0.0.0/todo')
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB is  connected successfully'))
   .catch((err) => console.error(err));
 

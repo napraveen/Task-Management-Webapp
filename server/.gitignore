@@ -5,4 +5,5 @@
 node_modules/
 =======
 node_modules/
+/.env
 >>>>>>> d19499b (Initial Commit)
