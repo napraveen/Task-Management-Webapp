@@ -8,7 +8,9 @@ const AboutTodo = () => {
   useEffect(() => {
     async function fetchTodo() {
       try {
-        const res = await fetch(`http://localhost:4000/api/todo/${title}`);
+        const res = await fetch(
+          `https://task-management-webapp-sonq.vercel.app/api/todo/${title}`
+        );
         const data = await res.json();
         setTodo(data.todo);
       } catch (error) {

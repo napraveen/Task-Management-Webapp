@@ -9,7 +9,10 @@ const { Todo } = require('./db');
 require('dotenv').config();
 app.use(
   cors({
-    origin: ['https://task-management-webapp-rho.vercel.app/', 'http://localhost:3000'],
+    origin: [
+      'https://task-management-webapp-rho.vercel.app',
+      'http://localhost:3000',
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   })

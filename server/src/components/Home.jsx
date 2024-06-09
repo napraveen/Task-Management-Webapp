@@ -12,13 +12,16 @@ const Home = () => {
   const [edittedValue, setEdittedValue] = useState('');
   const handleAddTodo = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/addone', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ title, description, dueDate }),
-      });
+      const response = await fetch(
+        'https://task-management-webapp-sonq.vercel.app/api/addone',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ title, description, dueDate }),
+        }
+      );
       const data = await response.json();
       setTodos(data.todos);
       setTitle('');
@@ -32,7 +35,7 @@ const Home = () => {
   const handleRemoveTodo = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/removetodo/${id}`,
+        `https://task-management-webapp-sonq.vercel.app/api/removetodo/${id}`,
         {
           method: 'DELETE',
           headers: {
@@ -49,13 +52,16 @@ const Home = () => {
   };
   const handleEditing = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/edittodo`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id: id, title: edittedValue }),
-      });
+      const response = await fetch(
+        `https://task-management-webapp-sonq.vercel.app/api/edittodo`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ id: id, title: edittedValue }),
+        }
+      );
       const data = await response.json();
       console.log('hoo ', data);
       setTodos(data.todos);
@@ -73,7 +79,9 @@ const Home = () => {
   useEffect(() => {
     async function showAll() {
       try {
-        const res = await fetch('http://localhost:4000/api/showall');
+        const res = await fetch(
+          'https://task-management-webapp-sonq.vercel.app/api/showall'
+        );
         const data = await res.json();
         setTodos(data.todos);
         console.log('data ', data.todos);
